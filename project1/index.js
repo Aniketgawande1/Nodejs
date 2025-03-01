@@ -106,15 +106,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/aniket")
     .catch((err) => console.log("Mongo Error", err));
 
 // Schema & Model
-const userSchema = new mongoose.Schema({
-    firstName: { type: String, required: true },
-    lastName: String,
-    email: { type: String, required: true, unique: true },
-    jobTitle: String,
-    gender: String
-});
 
-const User = mongoose.model("User", userSchema);
+
 
 // Middleware
 app.use(express.json());
