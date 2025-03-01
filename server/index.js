@@ -1,9 +1,17 @@
-const http = require ("http");
+// const http = require("http");
+const express = require("express");
+// const fs = require("fs");
+// const url = require("url");
 
-const myServer = http.createServer((req, res)=> {
-    console.log(req);
-    res.end("Hello From Server ");
 
+const app = express();
+
+app.get("/",(req,res)=>{
+return res.send("Hello From Home page")
 });
-
-myServer.listen(8000, ()=> console.log("Server Started!"));
+app.get("/about",(req,res)=>{
+    return res.send(`Hello Fom About Page`);
+    });
+app.listen(8000,()=> console.log("server startded"));
+//   const myServer = http.createServer(app);
+//  myServer.listen(8000, () => console.log("Server Started"));
