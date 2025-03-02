@@ -7,7 +7,7 @@
 // const PORT = 8000;
 // //Connection
 // mongoose
-// .connect(' mongodb://127.0.0.1:27017/aniket')
+// .connect(' mongodb://127.0.0.1:27017/Aniket')
 // .then(()=>console.log("MongoDB Connected"))
 // .catch((err)=>console.log("Mongo Error",err))
 // //Schema
@@ -113,12 +113,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/aniket")
 app.use(express.json());
 
 // Routes
-app.get('/api/users', async (req, res) => res.json(await User.find()));
-app.get('/api/users/:id', async (req, res) => res.json(await User.findById(req.params.id)));
-app.post('/api/users', async (req, res) => res.json(await new User(req.body).save()));
-app.put('/api/users/:id', async (req, res) => res.json(await User.findByIdAndUpdate(req.params.id, req.body, { new: true })));
-app.patch('/api/users/:id', async (req, res) => res.json(await User.findByIdAndUpdate(req.params.id, req.body, { new: true })));
-app.delete('/api/users/:id', async (req, res) => res.json(await User.findByIdAndDelete(req.params.id)));
+
 
 // Start Server
 app.listen(PORT, () => console.log(`Server started at PORT: ${PORT}`));
