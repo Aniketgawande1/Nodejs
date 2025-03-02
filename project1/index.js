@@ -96,24 +96,23 @@
 // app.listen(PORT, () => console.log(`Server started at PORT: ${PORT}`));
 const express = require("express");
 const mongoose = require("mongoose");
+const fs = require("fs")
+const {connectMongoDb} = require('./connection')
+const userRouter = require("./routes/user")
+const {logReqRes} =require("./middlewares")
 
 const app = express();
 const PORT = 8000;
-
-// Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/aniket")
-    .then(() => console.log("MongoDB Connected"))
-    .catch((err) => console.log("Mongo Error", err));
-
 // Schema & Model
-
+connectMongoDb("mongodb://127.0.0.1:27017/aniket")
 
 
 // Middleware
-app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+app.use(logReqRes('log.txt'))
 
 // Routes
-
+app.use("/user", userRouter)
 
 // Start Server
 app.listen(PORT, () => console.log(`Server started at PORT: ${PORT}`));
