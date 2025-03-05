@@ -1,5 +1,9 @@
 const express = require ('express');
+const {connectToMongoDB } = require("./routes/url");
+
 const app = express();
 const PORT = 8001;
-
+connectToMongoDB("mongodb://localhost:27017/short-url").then(()=>console.log('Mongodb conneted'))
+const urlRoutes = require("./routes/url");
+app.use("/url", urlRoute);
 app.listen(PORT,()=>console.log(`Server Started at Port ${PORT}`));
